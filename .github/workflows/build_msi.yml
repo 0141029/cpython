@@ -42,6 +42,12 @@ jobs:
     name: 'Windows (x64) Installer'
     runs-on: windows-latest
     steps:
+        - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: |
+          PCbuild/amd64/
     - uses: actions/checkout@v4
     - name: Build CPython installer
       run: .\Tools\msi\build.bat --doc -x64
